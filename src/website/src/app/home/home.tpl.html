@@ -53,7 +53,7 @@
 
     <section ng-hide="response_message || full_message">
         <p style="font-size: 18px;" class="text-center">
-            Can you make it?
+            Can You Make It?
         </p>
 
         <div
@@ -127,30 +127,28 @@
 
     <ul class="list-response col-md-8 col-md-offset-2">
         <li ng-repeat="attendee in attendees">
-            <a ng-href="{{ attendee.linkedin }}" target="_blank">
-                <strong>{{ attendee.name }}</strong>
+            <strong>{{ attendee.name }}</strong>
+            <a target="_blank" ng-href="{{ attendee.linkedin }}" class="btn btn-xs btn-primary pull-right">
+                LinkedIn
             </a>
-            <button class="btn btn-xs btn-success pull-right">
-                Attending
-            </button>
         </li>
     </ul>
 
     <br>
 
     <p style="font-size: 18px;" class="text-center col-md-8 col-md-offset-2">
-        Topics
+        Hangout Topics
     </p>
 
     <ul class="list-response col-md-8 col-md-offset-2">
-        <li>
-            <strong>Assignment 3</strong>
-        </li>
         <li>
             <strong>Your design briefs</strong>
         </li>
         <li>
             <strong>Wizard-of-Oz prototyping</strong>
+        </li>
+        <li>
+            <strong>Assignment 3</strong>
         </li>
     </ul>
 
