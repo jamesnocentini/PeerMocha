@@ -41,34 +41,70 @@ angular.module( 'ngBoilerplate.home', [
  */
 .controller( 'HomeCtrl', function HomeController( $scope, Hangout ) {
 
-        $scope.toggleBooking = function(value) {
+        $scope.toggleBookingToronto = function(value) {
             if (value === 'yes') {
-                $scope.isAttending = true;
+                $scope.isAttendingToronto = true;
             } else {
-                $scope.isAttending = false;
+                $scope.isAttendingToronto = false;
             }
         };
 
-        $scope.attendee = {};
+        $scope.toggleBookingLondon = function(value) {
+            if (value === 'yes') {
+                $scope.isAttendingLondon = true;
+            } else {
+                $scope.isAttendingLondon = false;
+            }
+        };
 
-        $scope.saveAttendee = function() {
-            Hangout.attend($scope.attendee)
+        $scope.attendee_toronto = {};
+        $scope.attendee_london = {};
+
+        $scope.saveAttendeeToronto = function() {
+            $scope.attendee_toronto.group = 'Toronto';
+            Hangout.attend($scope.attendee_toronto)
                 .then(
                     function (res) {
-                        $scope.attendees = res;
-                        $scope.response_message = 'Great. See you Thursday!'
+                        $scope.attendees_toronto = res;
+                        $scope.response_message_toronto = 'Great. See you Sunday!'
                     },
                     function (err) {
                         console.log(err);
                     }
                 )
-        }
+        };
 
-        Hangout.getAttendees().then(
+        $scope.saveAttendeeLondon = function() {
+            $scope.attendee_london.group = 'London';
+            Hangout.attend($scope.attendee_london)
+                .then(
+                function (res) {
+                    $scope.attendees_london = res;
+                    $scope.response_message_london = 'Great. See you Sunday!'
+                },
+                function (err) {
+                    console.log(err);
+                }
+            )
+        };
+
+        Hangout.getAttendeesByGroup('Toronto').then(
             function(res) {
-                $scope.attendees = res;
-                if($scope.attendees.length > 4) {
-                    $scope.full_message = 'This Hangout is full.'
+                $scope.attendees_toronto = res;
+                if($scope.attendees_toronto.length > 3) {
+                    $scope.full_message_toronto = 'This Hangout is full.'
+                }
+            },
+            function(err) {
+                console.log(err);
+            }
+        );
+
+        Hangout.getAttendeesByGroup('London').then(
+            function(res) {
+                $scope.attendees_london = res;
+                if($scope.attendees_london.length > 3) {
+                    $scope.full_message_london = 'This Hangout is full.'
                 }
             },
             function(err) {
@@ -79,6 +115,55 @@ angular.module( 'ngBoilerplate.home', [
         $scope.canSave = function(form_name) {
             return $scope.attendee.$dirty && $scope.attendee.$valid;
         };
+
+        $scope.question_toronto = {};
+        $scope.question_london = {};
+        $scope.addQuestionToronto = function() {
+            $scope.question_toronto.group = 'Toronto';
+            Hangout.addQuestion($scope.question_toronto)
+                .then(
+                    function(res) {
+                        $scope.question_toronto.question = '';
+                        $scope.questions_toronto = res;
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                );
+        };
+
+        $scope.addQuestionLondon = function() {
+            $scope.question_london.group = 'London';
+            Hangout.addQuestion($scope.question_london)
+                .then(
+                    function(res) {
+                        $scope.question_london.question = '';
+                        $scope.questions_london = res;
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                )
+        };
+
+        Hangout.getQuestionsByGroup('Toronto')
+            .then(function(res) {
+                    $scope.questions_toronto = res;
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
+
+        Hangout.getQuestionsByGroup('London')
+            .then(function(res) {
+                $scope.questions_london = res;
+            },
+            function(err) {
+                console.log(err);
+            }
+        );
+
 
 
 })
