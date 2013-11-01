@@ -11,159 +11,11 @@
 <section class="col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-3">
 
     <div class="clock-container">
-        <h3>17:00 - 18:00</h3>
-        <p>
-            Sunday, November 3rd, 2013
-            <br>GMT -4
-            <br>Toronto
-        </p>
-    </div>
-    <!--<button disabled-->
-            <!--type="button"-->
-            <!--class="btn btn-primary"-->
-            <!--style="width: 150px;margin: 0 auto;display: block;">-->
-        <!--<strong>Join Here</strong>-->
-        <!--<br>-->
-        <!--<em>in 2 days</em>-->
-    <!--</button>-->
-
-    <br>
-
-    <div
-            style="margin: 20px 0 0 0;"
-            ng-class="{'hidden': !response_message_toronto}"
-            class="alert alert-info">
-        <a href="#" class="alert-link">
-            {{ response_message_toronto }}
-        </a>
-    </div>
-
-    <div
-            style="margin: 20px 0 0 0;"
-            ng-class="{'hidden': !full_message_toronto}"
-            class="alert alert-info">
-        <a href="#" class="alert-link">
-            {{ full_message_toronto }}
-        </a>
-    </div>
-
-    <section ng-hide="response_message_toronto || full_message_toronto">
-        <p style="font-size: 18px;" class="text-center">
-            Can You Make It?
-        </p>
-        <div
-                style="width: 150px;margin: 0 auto;display: block;">
-            <button
-                    style="margin-right: 50px;"
-                    class="btn"
-                    ng-class="{'btn-success': isAttendingToronto == true, 'btn-default': !isAttendingToronto}"
-                    ng-click="toggleBookingToronto('yes');">
-                Yes
-            </button>
-            <button ng-click="toggleBookingToronto('no');"
-                    ng-class="{'btn-danger': isAttendingToronto == false, 'btn-default': isAttendingToronto == true || isAttendingToronto == undefined}"
-                    class="btn">
-                No
-            </button>
-        </div>
-
-        <section ng-switch="isAttendingToronto">
-            <form
-                    name="attendForm"
-                    class="form-signin"
-                    ng-switch-when="true"
-                    ng-hide="response_message_toronto">
-                <input
-                        required
-                        ng-model="attendee_toronto.name"
-                        type="text"
-                        name="name"
-                        class="form-control top"
-                        placeholder="Name">
-                <input
-                        required
-                        ng-model="attendee_toronto.email"
-                        type="text"
-                        name="email"
-                        class="form-control middle"
-                        placeholder="Email">
-                <input
-                        ng-model="attendee_toronto.linkedin"
-                        type="text"
-                        name="text"
-                        class="form-control bottom"
-                        placeholder="Link to your LinkedIn (optional)">
-                <button
-                        class="btn btn-lg btn-primary btn-block"
-                        ng-click="saveAttendeeToronto();">Attend</button>
-                <!--ng-disabled="!canSave('attendForm')"-->
-            </form>
-            <form class="form-signin" ng-switch-when="false">
-                <p style="font-size: 15px;" class="text-center">
-                    That's a shame.
-                    Maybe next week.
-                    <br>
-                    Good luck with assignment 3.
-                </p>
-            </form>
-
-        </section>
-    </section>
-
-    <br>
-
-    <section class="col-md-12">
-        <p style="font-size: 18px;" class="text-center">
-            Participants
-            <em style="font-size: 12px;">(4 maximum)</em>
-        </p>
-        <ul class="list-response col-md-8 col-md-offset-2">
-            <li ng-repeat="attendee in attendees_toronto">
-                <strong>{{ attendee.name }}</strong>
-                <a target="_blank" ng-href="{{ attendee.linkedin }}" class="btn btn-xs btn-primary pull-right">
-                    LinkedIn
-                </a>
-            </li>
-        </ul>
-    </section>
-
-    <br>
-
-    <p style="font-size: 18px;" class="text-center col-md-12 col-md-offset-0">
-        What's Your Question?
-        <em style="font-size: 12px;">(be specific)</em>
-    </p>
-    <ul class="list-questions col-md-12">
-        <li ng-repeat="question in questions_toronto">
-            <strong>{{ question.question }}</strong>
-            <hr class="separator"
-                align="center" width="40%" style="border-top: 1px solid #DDD;">
-        </li>
-    </ul>
-    <div class="input-group">
-        <input
-                ng-model="question_toronto.question"
-                type="text"
-                class="form-control">
-      <span class="input-group-btn">
-        <button ng-click="addQuestionToronto()"
-                class="btn btn-default" type="button">Add</button>
-      </span>
-    </div><!-- /input-group -->
-
-    <hr align="center" width="75%" style="border-top: 1px solid #DDD;">
-
-</section>
-
-
-<section class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
-
-    <div class="clock-container">
+        <h4>London</h4>
         <h3>17:00 - 18:00</h3>
         <p>
             Sunday, November 3rd, 2013
             <br>GMT +0
-            <br>London
         </p>
     </div>
     <!--<button disabled-->
@@ -293,6 +145,154 @@
                 class="form-control">
       <span class="input-group-btn">
         <button ng-click="addQuestionLondon()"
+                class="btn btn-default" type="button">Add</button>
+      </span>
+    </div><!-- /input-group -->
+
+    <hr align="center" width="75%" style="border-top: 1px solid #DDD;">
+
+</section>
+
+
+<section class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
+
+    <div class="clock-container">
+        <h4>Toronto</h4>
+        <h3>17:00 - 18:00</h3>
+        <p>
+            Sunday, November 3rd, 2013
+            <br>GMT -4
+        </p>
+    </div>
+    <!--<button disabled-->
+    <!--type="button"-->
+    <!--class="btn btn-primary"-->
+    <!--style="width: 150px;margin: 0 auto;display: block;">-->
+    <!--<strong>Join Here</strong>-->
+    <!--<br>-->
+    <!--<em>in 2 days</em>-->
+    <!--</button>-->
+
+    <br>
+
+    <div
+            style="margin: 20px 0 0 0;"
+            ng-class="{'hidden': !response_message_toronto}"
+            class="alert alert-info">
+        <a href="#" class="alert-link">
+            {{ response_message_toronto }}
+        </a>
+    </div>
+
+    <div
+            style="margin: 20px 0 0 0;"
+            ng-class="{'hidden': !full_message_toronto}"
+            class="alert alert-info">
+        <a href="#" class="alert-link">
+            {{ full_message_toronto }}
+        </a>
+    </div>
+
+    <section ng-hide="response_message_toronto || full_message_toronto">
+        <p style="font-size: 18px;" class="text-center">
+            Can You Make It?
+        </p>
+        <div
+                style="width: 150px;margin: 0 auto;display: block;">
+            <button
+                    style="margin-right: 50px;"
+                    class="btn"
+                    ng-class="{'btn-success': isAttendingToronto == true, 'btn-default': !isAttendingToronto}"
+                    ng-click="toggleBookingToronto('yes');">
+                Yes
+            </button>
+            <button ng-click="toggleBookingToronto('no');"
+                    ng-class="{'btn-danger': isAttendingToronto == false, 'btn-default': isAttendingToronto == true || isAttendingToronto == undefined}"
+                    class="btn">
+                No
+            </button>
+        </div>
+
+        <section ng-switch="isAttendingToronto">
+            <form
+                    name="attendForm"
+                    class="form-signin"
+                    ng-switch-when="true"
+                    ng-hide="response_message_toronto">
+                <input
+                        required
+                        ng-model="attendee_toronto.name"
+                        type="text"
+                        name="name"
+                        class="form-control top"
+                        placeholder="Name">
+                <input
+                        required
+                        ng-model="attendee_toronto.email"
+                        type="text"
+                        name="email"
+                        class="form-control middle"
+                        placeholder="Email">
+                <input
+                        ng-model="attendee_toronto.linkedin"
+                        type="text"
+                        name="text"
+                        class="form-control bottom"
+                        placeholder="Link to your LinkedIn (optional)">
+                <button
+                        class="btn btn-lg btn-primary btn-block"
+                        ng-click="saveAttendeeToronto();">Attend</button>
+                <!--ng-disabled="!canSave('attendForm')"-->
+            </form>
+            <form class="form-signin" ng-switch-when="false">
+                <p style="font-size: 15px;" class="text-center">
+                    That's a shame.
+                    Maybe next week.
+                    <br>
+                    Good luck with assignment 3.
+                </p>
+            </form>
+
+        </section>
+    </section>
+
+    <br>
+
+    <section class="col-md-12">
+        <p style="font-size: 18px;" class="text-center">
+            Participants
+            <em style="font-size: 12px;">(4 maximum)</em>
+        </p>
+        <ul class="list-response col-md-8 col-md-offset-2">
+            <li ng-repeat="attendee in attendees_toronto">
+                <strong>{{ attendee.name }}</strong>
+                <a target="_blank" ng-href="{{ attendee.linkedin }}" class="btn btn-xs btn-primary pull-right">
+                    LinkedIn
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <br>
+
+    <p style="font-size: 18px;" class="text-center col-md-12 col-md-offset-0">
+        What's Your Question?
+        <em style="font-size: 12px;">(be specific)</em>
+    </p>
+    <ul class="list-questions col-md-12">
+        <li ng-repeat="question in questions_toronto">
+            <strong>{{ question.question }}</strong>
+            <hr class="separator"
+                align="center" width="40%" style="border-top: 1px solid #DDD;">
+        </li>
+    </ul>
+    <div class="input-group">
+        <input
+                ng-model="question_toronto.question"
+                type="text"
+                class="form-control">
+      <span class="input-group-btn">
+        <button ng-click="addQuestionToronto()"
                 class="btn btn-default" type="button">Add</button>
       </span>
     </div><!-- /input-group -->
