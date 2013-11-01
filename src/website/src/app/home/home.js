@@ -116,6 +116,55 @@ angular.module( 'ngBoilerplate.home', [
             return $scope.attendee.$dirty && $scope.attendee.$valid;
         };
 
+        $scope.question_toronto = {};
+        $scope.question_london = {};
+        $scope.addQuestionToronto = function() {
+            $scope.question_toronto.group = 'Toronto';
+            Hangout.addQuestion($scope.question_toronto)
+                .then(
+                    function(res) {
+                        $scope.question_toronto.question = '';
+                        $scope.questions_toronto = res;
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                );
+        };
+
+        $scope.addQuestionLondon = function() {
+            $scope.question_london.group = 'London';
+            Hangout.addQuestion($scope.question_london)
+                .then(
+                    function(res) {
+                        $scope.question_london.question = '';
+                        $scope.questions_london = res;
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                )
+        };
+
+        Hangout.getQuestionsByGroup('Toronto')
+            .then(function(res) {
+                    $scope.questions_toronto = res;
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
+
+        Hangout.getQuestionsByGroup('London')
+            .then(function(res) {
+                $scope.questions_london = res;
+            },
+            function(err) {
+                console.log(err);
+            }
+        );
+
+
 
 })
 

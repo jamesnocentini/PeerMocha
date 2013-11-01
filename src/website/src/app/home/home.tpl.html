@@ -113,34 +113,43 @@
 
     <br>
 
-    <p style="font-size: 18px;" class="text-center">
-        Participants (5 maximum)
-    </p>
-    <ul class="list-response col-md-8 col-md-offset-2">
-        <li ng-repeat="attendee in attendees_toronto">
-            <strong>{{ attendee.name }}</strong>
-            <a target="_blank" ng-href="{{ attendee.linkedin }}" class="btn btn-xs btn-primary pull-right">
-                LinkedIn
-            </a>
-        </li>
-    </ul>
+    <section class="col-md-12">
+        <p style="font-size: 18px;" class="text-center">
+            Participants (4 maximum)
+        </p>
+        <ul class="list-response col-md-8 col-md-offset-2">
+            <li ng-repeat="attendee in attendees_toronto">
+                <strong>{{ attendee.name }}</strong>
+                <a target="_blank" ng-href="{{ attendee.linkedin }}" class="btn btn-xs btn-primary pull-right">
+                    LinkedIn
+                </a>
+            </li>
+        </ul>
+    </section>
 
     <br>
 
-    <p style="font-size: 18px;" class="text-center col-md-8 col-md-offset-2">
-        Hangout Topics
+    <p style="font-size: 18px;" class="text-center col-md-12 col-md-offset-0">
+        What's Your Question?
+        <em style="font-size: 12px;">(be specific)</em>
     </p>
-    <ul class="list-response col-md-8 col-md-offset-2">
-        <li>
-            <strong>Your design briefs</strong>
-        </li>
-        <li>
-            <strong>Wizard-of-Oz prototyping</strong>
-        </li>
-        <li>
-            <strong>Assignment 3</strong>
+    <ul class="list-questions col-md-12">
+        <li ng-repeat="question in questions_toronto">
+            <strong>{{ question.question }}</strong>
+            <hr class="separator"
+                align="center" width="40%" style="border-top: 1px solid #DDD;">
         </li>
     </ul>
+    <div class="input-group">
+        <input
+                ng-model="question_toronto.question"
+                type="text"
+                class="form-control">
+      <span class="input-group-btn">
+        <button ng-click="addQuestionToronto()"
+                class="btn btn-default" type="button">Add</button>
+      </span>
+    </div><!-- /input-group -->
 
     <hr align="center" width="75%" style="border-top: 1px solid #DDD;">
 
@@ -252,7 +261,7 @@
     <br>
 
     <p style="font-size: 18px;" class="text-center">
-        Participants (5 maximum)
+        Participants (4 maximum)
     </p>
     <ul class="list-response col-md-8 col-md-offset-2">
         <li ng-repeat="attendee in attendees_london">
@@ -265,20 +274,27 @@
 
     <br>
 
-    <p style="font-size: 18px;" class="text-center col-md-8 col-md-offset-2">
-        Hangout Topics
+    <p style="font-size: 18px;" class="text-center col-md-12">
+        What's Your Question?
+        <em style="font-size: 12px;">(be specific)</em>
     </p>
-    <ul class="list-response col-md-8 col-md-offset-2">
-        <li>
-            <strong>Your design briefs</strong>
-        </li>
-        <li>
-            <strong>Wizard-of-Oz prototyping</strong>
-        </li>
-        <li>
-            <strong>Assignment 3</strong>
+    <ul class="list-questions col-md-12">
+        <li ng-repeat="question in questions_london">
+            <strong>{{ question.question }}</strong>
+            <hr class="separator"
+                align="center" width="40%" style="border-top: 1px solid #DDD;">
         </li>
     </ul>
+    <div class="input-group">
+        <input
+                ng-model="question_london.question"
+                type="text"
+                class="form-control">
+      <span class="input-group-btn">
+        <button ng-click="addQuestionLondon()"
+                class="btn btn-default" type="button">Add</button>
+      </span>
+    </div><!-- /input-group -->
 
     <hr align="center" width="75%" style="border-top: 1px solid #DDD;">
 
